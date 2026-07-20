@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio ของ ชลสิทธิ์ นิลศิริ - Director, Camera Assistant และ Camera Operator" />
+  <meta name="theme-color" content="#081a3a" />
+  <title>Chonlasit Nilsiri — Production Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --white: #ffffff;
+      --navy: #081a3a;
+      --navy-2: #0d2f67;
+      --navy-3: #143f88;
+      --blue: #338cff;
+      --blue-2: #72b6ff;
+      --sky: #dceeff;
+      --ice: #eff6ff;
+      --ink: #122237;
+      --muted: #6b7b92;
+      --line: rgba(10, 31, 68, 0.12);
+      --line-strong: rgba(10, 31, 68, 0.22);
+      --shadow: 0 18px 50px rgba(8, 26, 58, 0.10);
+      --shadow-strong: 0 28px 82px rgba(8, 26, 58, 0.18);
+      --radius: 28px;
+      --cursor-x: 50vw;
+      --cursor-y: 50vh;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans Thai", "Leelawadee UI", Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(700px circle at var(--cursor-x) var(--cursor-y), rgba(114, 182, 255, .13), transparent 38%),
+        linear-gradient(180deg, #fbfdff 0%, #f2f8ff 100%);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    body.modal-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: rgba(51, 140, 255, .18); }
+
+    .page-noise::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      opacity: .18;
+      background-image:
+        radial-gradient(circle at 12% 18%, rgba(51, 140, 255, .08), transparent 16%),
+        radial-gradient(circle at 84% 12%, rgba(8, 26, 58, .05), transparent 18%),
+        radial-gradient(circle at 78% 86%, rgba(114, 182, 255, .10), transparent 15%);
+    }
+
+    .cursor-dot,
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; pointer-events: none; z-index: 5000;
+      transform: translate(-50%, -50%);
+      transition: width .18s ease, height .18s ease, border-color .18s ease, background .18s ease, opacity .18s ease;
+    }
+    .cursor-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(51, 140, 255, .95);
+      box-shadow: 0 0 30px rgba(51, 140, 255, .45);
+    }
+    .cursor-ring {
+      width: 46px; height: 46px; border-radius: 50%;
+      border: 1px solid rgba(51, 140, 255, .46);
+      background: rgba(51, 140, 255, .05);
+      backdrop-filter: blur(3px);
+    }
+    .cursor-ring.active {
+      width: 74px; height: 74px;
+      border-color: rgba(114, 182, 255, .82);
+      background: rgba(51, 140, 255, .12);
+    }
+
+    .skip-link {
+      position: fixed; left: 16px; top: -60px; z-index: 7000;
+      padding: 10px 16px; background: var(--white); color: var(--navy);
+      border-radius: 999px; box-shadow: var(--shadow);
+    }
+    .skip-link:focus { top: 14px; }
+
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px clamp(18px, 4vw, 62px);
+      color: var(--white);
+      transition: padding .28s ease, background .28s ease, color .28s ease, border-color .28s ease, box-shadow .28s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled {
+      padding-top: 12px; padding-bottom: 12px;
+      background: rgba(255,255,255,.84);
+      color: var(--navy);
+      border-color: rgba(8,26,58,.08);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(8,26,58,.06);
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-weight: 900; letter-spacing: -.02em;
+    }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 15px;
+      display: grid; place-items: center;
+      border: 1px solid currentColor;
+      background: rgba(255,255,255,.08);
+      font-size: 13px;
+    }
+    .brand-copy { line-height: 1.05; text-transform: uppercase; font-size: 14px; }
+    .nav-links { display: flex; gap: 26px; font-size: 14px; font-weight: 800; }
+    .nav-links a { position: relative; padding-bottom: 2px; }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; right: 100%; bottom: 0;
+      height: 1.5px; background: currentColor; transition: right .22s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after { right: 0; }
+    .menu-btn { display: none; background: none; color: inherit; border: 0; font-weight: 900; cursor: pointer; }
+
+    .hero {
+      position: relative; min-height: 100svh; display: flex; align-items: flex-end;
+      padding: 138px clamp(18px, 4vw, 62px) clamp(44px, 7vw, 84px);
+      color: var(--white); overflow: hidden; isolation: isolate;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -3;
+      background: url("assets/hero.webp") center 42% / cover no-repeat;
+      transform: scale(1.03);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(6,18,42,.93) 0%, rgba(6,18,42,.70) 38%, rgba(6,18,42,.18) 72%, rgba(6,18,42,.08) 100%),
+        linear-gradient(0deg, rgba(6,18,42,.88) 0%, rgba(6,18,42,0) 54%);
+    }
+    .hero-glow,
+    .hero-glow-2 {
+      position: absolute; border-radius: 50%; filter: blur(16px); pointer-events: none; z-index: -1; opacity: .68;
+    }
+    .hero-glow {
+      width: 290px; height: 290px; right: 8%; top: 14%;
+      background: radial-gradient(circle, rgba(51,140,255,.62), rgba(51,140,255,0));
+      animation: floaty 9s ease-in-out infinite;
+    }
+    .hero-glow-2 {
+      width: 220px; height: 220px; left: 4%; bottom: 12%;
+      background: radial-gradient(circle, rgba(114,182,255,.34), rgba(114,182,255,0));
+      animation: floaty 11s ease-in-out infinite reverse;
+    }
+    @keyframes floaty {
+      0%,100% { transform: translate3d(0,0,0); }
+      50% { transform: translate3d(0,-18px,0); }
+    }
+    .hero-inner { width: min(1320px, 100%); margin-inline: auto; }
+    .hero-copy { width: min(430px, 32vw); }
+    .hero-kicker {
+      display: inline-flex; gap: 12px; align-items: center; margin-bottom: 18px;
+      font-size: 13px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .hero-kicker::before { content: ""; width: 46px; height: 1px; background: currentColor; }
+    .hero-title {
+      margin: 0; max-width: 430px;
+      font-family: Impact, "Arial Black", Arial, sans-serif;
+      font-size: clamp(44px, 5.5vw, 78px);
+      line-height: .9; letter-spacing: -.035em; text-transform: uppercase;
+      text-wrap: balance;
+      opacity: 0; transform: translateY(24px);
+      animation: riseIn .8s ease .2s forwards;
+      text-shadow: 0 10px 34px rgba(2,10,28,.38);
+    }
+    .hero-title-line { display: block; white-space: nowrap; }
+    .hero-title .outline { color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.92); }
+    .hero-bottom {
+      margin-top: 30px;
+      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(310px, .95fr);
+      gap: 28px; align-items: end;
+      opacity: 0; transform: translateY(18px);
+      animation: riseIn .8s ease .42s forwards;
+    }
+    @keyframes riseIn {
+      to { opacity: 1; transform: none; }
+    }
+    .hero-intro { margin: 0; max-width: 760px; font-size: clamp(17px, 2vw, 24px); line-height: 1.5; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 20px; }
+    .hero-pill {
+      padding: 10px 14px; border-radius: 999px; font-size: 12px; font-weight: 800;
+      border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+    .hero-quick {
+      margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;
+    }
+    .quick-card {
+      padding: 16px 16px 18px; border-radius: 18px; border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
+    }
+    .quick-card strong { display: block; font-size: 28px; line-height: 1; margin-bottom: 8px; }
+    .quick-card span { font-size: 12px; color: rgba(255,255,255,.78); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 50px; padding: 0 22px; border-radius: 999px; border: 1px solid transparent;
+      font-weight: 900; cursor: pointer;
+      transition: transform .22s ease, background .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue) 0%, #5cb0ff 100%);
+      color: var(--white); box-shadow: 0 10px 24px rgba(51, 140, 255, .24);
+    }
+    .btn-primary:hover { box-shadow: 0 16px 34px rgba(51, 140, 255, .32); }
+    .btn-ghost {
+      border-color: rgba(255,255,255,.5);
+      color: var(--white); background: rgba(255,255,255,.07);
+    }
+    .btn-ghost:hover { background: var(--white); color: var(--navy); }
+    .btn-dark { background: var(--navy); color: var(--white); }
+    .btn-dark:hover { background: var(--navy-2); }
+
+    .section { padding: clamp(76px, 10vw, 150px) clamp(18px, 4vw, 62px); }
+    .section-inner { width: min(1320px, 100%); margin-inline: auto; }
+    .section-head {
+      display: grid; grid-template-columns: minmax(240px, .6fr) minmax(0, 1.4fr);
+      gap: clamp(30px, 7vw, 90px); align-items: start; margin-bottom: 54px;
+    }
+    .eyebrow {
+      color: var(--blue); font-size: 13px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .display-title {
+      margin: 10px 0 0; color: var(--navy);
+      font-family: Impact, "Arial Black", sans-serif;
+      font-size: clamp(48px, 8vw, 108px);
+      line-height: .9; letter-spacing: -.04em; text-transform: uppercase;
+    }
+    .section-copy {
+      margin: 0; max-width: 810px;
+      color: #25405d; font-size: clamp(18px, 2vw, 28px); line-height: 1.45;
+    }
+
+    .panel {
+      position: relative;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.66);
+      border-radius: calc(var(--radius) + 8px);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+    .panel::before {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+    }
+    .panel-head {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 18px 20px; border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.46));
+    }
+    .panel-title { display: flex; align-items: center; gap: 12px; font-weight: 900; color: var(--navy); }
+    .panel-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px;
+      border-radius: 999px; background: var(--ice); color: var(--navy-2);
+      font-size: 12px; font-weight: 800; border: 1px solid var(--line);
+    }
+    .panel-sub { color: var(--muted); font-size: 14px; }
+
+    .about-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(30px, 8vw, 100px); align-items: center; }
+    .profile-wrap { position: relative; }
+    .profile-wrap::before,
+    .profile-wrap::after {
+      content: ""; position: absolute; border-radius: 50%; z-index: 0;
+      background: radial-gradient(circle, rgba(51,140,255,.16), rgba(51,140,255,0));
+    }
+    .profile-wrap::before { width: 210px; height: 210px; left: -8%; top: -6%; }
+    .profile-wrap::after { width: 140px; height: 140px; right: -6%; bottom: -6%; }
+    .profile-card {
+      position: relative; z-index: 1; overflow: hidden; border-radius: 30px;
+      box-shadow: var(--shadow-strong); background: linear-gradient(160deg, var(--sky), var(--white));
+      aspect-ratio: 4 / 5; border: 1px solid rgba(255,255,255,.82);
+    }
+    .profile-card img { width: 100%; height: 100%; object-fit: cover; }
+    .about-copy h2 { margin: 0 0 22px; color: var(--navy); font-size: clamp(34px, 5vw, 66px); line-height: 1.05; }
+    .about-copy p { margin: 0 0 18px; font-size: 18px; color: #34445c; }
+    .mini-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 28px 0; }
+    .stat {
+      padding: 18px; border-radius: 18px; background: var(--white); border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(8,26,58,.05);
+    }
+    .stat strong { display: block; font-size: 28px; line-height: 1; color: var(--navy); margin-bottom: 8px; }
+    .stat span { font-size: 13px; color: var(--muted); }
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      padding: 9px 13px; border-radius: 999px; background: var(--white); color: var(--navy);
+      border: 1px solid var(--line); font-size: 13px; font-weight: 800;
+    }
+
+    .toolkit { background: linear-gradient(180deg, rgba(220,238,255,.22) 0%, rgba(255,255,255,0) 100%); }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; padding: 22px; }
+    .tool-card {
+      position: relative; padding: 18px; min-height: 145px; border-radius: 22px;
+      border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,.95) 0%, rgba(239,246,255,.88) 100%);
+      box-shadow: 0 12px 28px rgba(8,26,58,.06); overflow: hidden;
+    }
+    .tool-card::after {
+      content: ""; position: absolute; inset: auto -25% -42% auto; width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(51,140,255,.15), rgba(51,140,255,0));
+    }
+    .tool-card small { display: block; font-size: 12px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .tool-name { margin: 12px 0 6px; font-size: 20px; font-weight: 900; color: var(--navy); }
+    .tool-desc { margin: 0; color: #47607f; font-size: 14px; max-width: 92%; }
+    .tool-icon {
+      width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center;
+      color: var(--white); font-size: 15px; font-weight: 900; letter-spacing: -.02em;
+      box-shadow: 0 12px 24px rgba(8,26,58,.12);
+    }
+    .icon-pr { background: linear-gradient(135deg, #5c0d3d, #a60074); }
+    .icon-dr { background: linear-gradient(135deg, #0d3e53, #19a0ad); }
+    .icon-cc { background: linear-gradient(135deg, #090909, #2b2b2b); }
+    .icon-ca { background: linear-gradient(135deg, #2b6dff, #7a52ff); }
+    .icon-lr { background: linear-gradient(135deg, #0d2748, #0077ff); }
+    .icon-fl { background: linear-gradient(135deg, #973a00, #ff8c00); }
+    .icon-ai { background: linear-gradient(135deg, #0e1628, #263d74); }
+    .icon-gm { background: linear-gradient(135deg, #715bff, #2ed0ff); }
+    .icon-cl { background: linear-gradient(135deg, #a45b12, #ffb04c); }
+
+    .archive-body { padding: 22px; }
+    .work-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .work-card {
+      position: relative; grid-column: span 6; min-height: 440px; border-radius: 24px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.62); background: var(--navy); box-shadow: 0 16px 45px rgba(8,26,58,.10);
+      cursor: pointer; text-align: left; transform-style: preserve-3d;
+      transition: transform .18s ease, box-shadow .22s ease, border-color .22s ease;
+      --mx: 50%; --my: 50%;
+    }
+    .work-card:nth-child(1), .work-card:nth-child(6) { grid-column: span 8; }
+    .work-card:nth-child(2), .work-card:nth-child(5) { grid-column: span 4; }
+    .work-card:nth-child(7), .work-card:nth-child(8), .work-card:nth-child(9) { grid-column: span 4; min-height: 380px; }
+    .work-card::before {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(circle at var(--mx) var(--my), rgba(114,182,255,.28), transparent 28%);
+      mix-blend-mode: screen;
+    }
+    .work-card::after {
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(0deg, rgba(4,14,33,.96) 0%, rgba(4,14,33,.36) 58%, rgba(4,14,33,.06) 100%);
+    }
+    .work-card:hover {
+      box-shadow: 0 28px 70px rgba(8,26,58,.18);
+      border-color: rgba(114,182,255,.78);
+    }
+    .work-card img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: transform .62s cubic-bezier(.2,.7,.2,1);
+    }
+    .work-card:hover img { transform: scale(1.06); }
+    .work-outline {
+      position: absolute; inset: 14px; z-index: 2; border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.22); pointer-events: none;
+    }
+    .work-meta {
+      position: absolute; z-index: 3; left: 0; right: 0; bottom: 0;
+      padding: 24px; display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: end;
+    }
+    .work-type { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.70); }
+    .work-title { margin: 7px 0 6px; color: var(--white); font-size: clamp(22px, 3vw, 38px); line-height: 1.08; }
+    .work-role {
+      display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,.88); font-size: 14px; font-weight: 700;
+    }
+    .work-role::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--blue-2);
+      box-shadow: 0 0 16px rgba(114,182,255,.7);
+    }
+    .work-cta {
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px;
+      border-radius: 999px; font-size: 13px; font-weight: 900;
+      color: var(--white); border: 1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.08); backdrop-filter: blur(12px);
+      transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .work-card:hover .work-cta { background: var(--white); color: var(--navy); transform: translateY(-2px); }
+
+
+    .resume-section {
+      background: linear-gradient(180deg, rgba(220,238,255,.22) 0%, rgba(255,255,255,0) 100%);
+    }
+    .resume-layout {
+      display: grid; grid-template-columns: minmax(300px, .9fr) minmax(0, 1.1fr);
+      gap: clamp(30px, 7vw, 86px); align-items: center;
+    }
+    .resume-preview {
+      position: relative; padding: 14px; border-radius: 30px;
+      background: rgba(255,255,255,.82); border: 1px solid rgba(255,255,255,.8);
+      box-shadow: var(--shadow-strong); backdrop-filter: blur(12px);
+    }
+    .resume-preview::after {
+      content: "Click to view full resume"; position: absolute; left: 28px; right: 28px; bottom: 28px;
+      padding: 12px 16px; border-radius: 999px; text-align: center;
+      color: var(--white); background: rgba(8,26,58,.76); border: 1px solid rgba(255,255,255,.16);
+      font-size: 12px; font-weight: 900; letter-spacing: .05em; text-transform: uppercase;
+      backdrop-filter: blur(12px); pointer-events: none;
+    }
+    .resume-preview button {
+      width: 100%; border: 0; padding: 0; background: transparent; border-radius: 20px; overflow: hidden; cursor: zoom-in;
+    }
+    .resume-preview img { width: 100%; border-radius: 20px; }
+    .resume-copy h3 {
+      margin: 0 0 18px; color: var(--navy); font-size: clamp(34px, 5vw, 64px); line-height: 1.05;
+    }
+    .resume-copy p { margin: 0 0 18px; color: #34445c; font-size: 18px; }
+    .resume-highlights {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 26px 0;
+    }
+    .resume-highlight { padding: 17px; border-radius: 18px; background: var(--white); border: 1px solid var(--line); }
+    .resume-highlight strong { display: block; color: var(--navy); margin-bottom: 5px; }
+    .resume-highlight span { color: var(--muted); font-size: 13px; }
+    .resume-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .experience { background: linear-gradient(180deg, #071a39 0%, #0b2758 100%); color: var(--white); }
+    .experience .display-title { color: var(--white); }
+    .experience .section-copy { color: #d8e4f7; }
+    .timeline-panel { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.12); }
+    .timeline { padding: 0 22px 12px; }
+    .timeline-row {
+      display: grid; grid-template-columns: 170px 1fr 1.15fr; gap: 28px; align-items: start;
+      padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .timeline-row:last-child { border-bottom: 0; }
+    .timeline-year { color: #9bc6ff; font-weight: 900; }
+    .timeline-role { font-size: 22px; font-weight: 900; }
+    .timeline-note { color: #d6e2f6; }
+
+    .gallery-grid { columns: 4 240px; column-gap: 16px; }
+    .gallery-item {
+      border: 1px solid rgba(255,255,255,.62); padding: 0; margin: 0 0 16px; width: 100%; background: var(--white);
+      display: inline-block; break-inside: avoid; border-radius: 18px; overflow: hidden; cursor: zoom-in;
+      box-shadow: 0 10px 28px rgba(8,26,58,.08); transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(8,26,58,.12); }
+    .gallery-item img { width: 100%; transition: transform .45s ease, filter .45s ease; }
+    .gallery-item:hover img { transform: scale(1.03); filter: contrast(1.04); }
+
+    .bts-strip {
+      display: grid; grid-auto-flow: column; grid-auto-columns: minmax(280px, 31vw); gap: 16px;
+      overflow-x: auto; padding: 18px 22px 22px; scroll-snap-type: x mandatory;
+    }
+    .bts-card {
+      position: relative; scroll-snap-align: start; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3;
+      border: 1px solid var(--line); background: var(--sky); cursor: zoom-in;
+      box-shadow: 0 12px 28px rgba(8,26,58,.08);
+    }
+    .bts-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .bts-card:hover img { transform: scale(1.04); }
+
+    .contact {
+      background: linear-gradient(180deg, #091d40 0%, #07162f 100%);
+      color: var(--white); padding: clamp(80px, 11vw, 150px) clamp(18px, 4vw, 62px) 36px;
+      position: relative; overflow: hidden;
+    }
+    .contact::before {
+      content: ""; position: absolute; inset: auto -80px -80px auto; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(51,140,255,.22), rgba(51,140,255,0)); pointer-events: none;
+    }
+    .contact-inner { width: min(1320px, 100%); margin-inline: auto; }
+    .contact-title {
+      margin: 0; font-family: Impact, "Arial Black", sans-serif;
+      font-size: clamp(60px, 13vw, 170px); line-height: .85; letter-spacing: -.04em; text-transform: uppercase;
+    }
+    .contact-title span { color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.92); }
+    .contact-grid {
+      margin-top: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+      padding-top: 26px; border-top: 1px solid rgba(255,255,255,.18);
+    }
+    .contact-links { display: grid; gap: 14px; font-size: clamp(20px, 2.4vw, 34px); font-weight: 900; }
+    .contact-links a:hover { color: #8bc2ff; }
+    .contact-note {
+      align-self: start; justify-self: end; max-width: 520px; color: #d3dff1;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 22px; padding: 20px; backdrop-filter: blur(12px);
+    }
+    .social-showcase {
+      margin-top: 34px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px;
+    }
+    .social-card {
+      position: relative; overflow: hidden;
+      padding: 22px; min-height: 150px;
+      border-radius: 24px; border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06); color: var(--white);
+      box-shadow: 0 16px 40px rgba(0,0,0,.14);
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+      backdrop-filter: blur(12px);
+    }
+    .social-card::before {
+      content: ""; position: absolute; inset: auto -30px -40px auto; width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.18), rgba(255,255,255,0));
+    }
+    .social-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,.24); }
+    .social-label { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; opacity: .84; }
+    .social-icon {
+      width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center;
+      background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.14); font-weight: 900;
+    }
+    .social-name { margin: 18px 0 6px; font-size: 26px; font-weight: 900; }
+    .social-desc { margin: 0; color: rgba(255,255,255,.78); font-size: 14px; }
+    .social-yt { background: linear-gradient(135deg, rgba(122,0,0,.38), rgba(255,0,0,.20), rgba(255,255,255,.06)); }
+    .social-ig { background: linear-gradient(135deg, rgba(93,7,125,.40), rgba(255,102,0,.18), rgba(255,255,255,.06)); }
+    .social-fb { background: linear-gradient(135deg, rgba(15,55,145,.42), rgba(35,133,255,.18), rgba(255,255,255,.06)); }
+    .social-production {
+      background: linear-gradient(135deg, rgba(8,26,58,.92), rgba(51,140,255,.34), rgba(255,255,255,.08));
+      border-color: rgba(114,182,255,.34);
+    }
+    .social-production .social-icon { background: linear-gradient(135deg, #338cff, #86c5ff); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; gap: 18px; margin-top: 84px;
+      padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); color: #a9bdd6; font-size: 13px;
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.in-view { opacity: 1; transform: none; }
+
+    .case-modal {
+      position: fixed; inset: 0; z-index: 2000; background: var(--white); color: var(--ink);
+      opacity: 0; visibility: hidden; transform: translateY(20px); transition: .32s ease; overflow-y: auto;
+    }
+    .case-modal.open { opacity: 1; visibility: visible; transform: none; }
+    .case-nav {
+      position: sticky; top: 0; z-index: 4;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 14px clamp(18px, 4vw, 62px);
+      background: rgba(255,255,255,.86); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px);
+    }
+    .case-close {
+      border: 0; background: none; color: var(--navy); cursor: pointer; font-weight: 900;
+      display: inline-flex; gap: 10px; align-items: center;
+    }
+    .case-hint { color: var(--muted); font-size: 13px; font-weight: 800; }
+    .case-hero {
+      min-height: 72svh; display: grid; align-items: end; padding: 118px clamp(18px, 4vw, 62px) 52px;
+      color: var(--white); position: relative; isolation: isolate; background: var(--navy);
+    }
+    .case-hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -2; background: var(--case-image) center/cover no-repeat;
+    }
+    .case-hero::after {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(4,14,33,.88), rgba(4,14,33,.42) 55%, rgba(4,14,33,.14)),
+        linear-gradient(0deg, rgba(4,14,33,.94), rgba(4,14,33,.16));
+    }
+    .case-hero-inner { width: min(1320px, 100%); margin-inline: auto; }
+    .case-label { font-size: 13px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .case-title { margin: 12px 0 10px; font-size: clamp(46px, 8vw, 110px); line-height: .9; letter-spacing: -.04em; max-width: 1000px; }
+    .case-role { font-size: clamp(18px, 2vw, 27px); }
+    .case-content { padding: clamp(62px, 9vw, 118px) clamp(18px, 4vw, 62px); }
+    .case-content-inner { width: min(1160px, 100%); margin-inline: auto; }
+    .case-summary { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 8vw, 100px); }
+    .case-facts {
+      display: grid; gap: 14px; align-content: start;
+      padding: 18px; border-radius: 24px; background: var(--ice); border: 1px solid var(--line);
+      box-shadow: 0 14px 35px rgba(8,26,58,.06);
+    }
+    .case-fact { padding: 16px; border-radius: 18px; background: var(--white); border: 1px solid var(--line); }
+    .case-fact span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .case-fact strong { display: block; color: var(--navy); margin-top: 5px; }
+    .case-copy h3 { margin: 0 0 16px; color: var(--navy); font-size: 34px; }
+    .case-copy p { margin: 0 0 24px; font-size: 19px; color: #34445d; }
+    .case-copy ul { padding-left: 22px; color: #34445d; font-size: 18px; margin: 0; }
+    .case-copy li + li { margin-top: 8px; }
+    .case-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .case-gallery { margin-top: 70px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .case-gallery button {
+      border: 0; padding: 0; background: none; border-radius: 20px; overflow: hidden; cursor: zoom-in;
+      box-shadow: 0 16px 35px rgba(8,26,58,.10);
+    }
+    .case-gallery img { width: 100%; height: 100%; object-fit: cover; min-height: 260px; }
+    .case-gallery button:first-child:nth-last-child(4),
+    .case-gallery button:first-child:nth-last-child(3) { grid-row: span 2; }
+
+    .lightbox {
+      position: fixed; inset: 0; z-index: 3000; display: grid; place-items: center;
+      background: rgba(2,10,26,.94); opacity: 0; visibility: hidden; transition: .24s ease; padding: 30px;
+    }
+    .lightbox.open { opacity: 1; visibility: visible; }
+    .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 14px; box-shadow: 0 35px 100px rgba(0,0,0,.45); }
+    .lightbox-close {
+      position: fixed; top: 18px; right: 22px; width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.42); color: var(--white); background: rgba(255,255,255,.08);
+      cursor: pointer; font-size: 24px;
+    }
+
+    @media (max-width: 960px) {
+      body { cursor: auto; }
+      .cursor-dot, .cursor-ring { display: none; }
+      .nav-links {
+        position: fixed; inset: 72px 14px auto; background: rgba(255,255,255,.96); color: var(--navy);
+        border-radius: 20px; padding: 22px; display: grid; gap: 16px;
+        box-shadow: var(--shadow-strong); border: 1px solid rgba(255,255,255,.8);
+        opacity: 0; visibility: hidden; transform: translateY(-8px); transition: .24s ease;
+      }
+      .nav-links.open { opacity: 1; visibility: visible; transform: none; }
+      .menu-btn { display: block; }
+      .hero-bottom,
+      .section-head,
+      .about-grid,
+      .resume-layout,
+      .case-summary,
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero-copy { width: min(430px, 48vw); }
+      .hero-actions { justify-content: flex-start; }
+      .hero-quick { grid-template-columns: 1fr; }
+      .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .work-card, .work-card:nth-child(n) { grid-column: span 6; min-height: 390px; }
+      .timeline-row { grid-template-columns: 120px 1fr; }
+      .timeline-note { grid-column: 2; }
+      .contact-note { justify-self: start; }
+      .social-showcase { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .site-header { padding-inline: 18px; }
+      .brand-copy { display: none; }
+      .hero {
+        min-height: auto; display: block; background: #071a39;
+        padding-top: calc(min(46vh, 380px) + 26px);
+      }
+      .hero::before, .hero::after { bottom: auto; height: min(46vh, 380px); }
+      .hero::before { background-position: center 38%; }
+      .hero::after {
+        background: linear-gradient(0deg, rgba(7,26,57,.98) 0%, rgba(7,26,57,.24) 44%, rgba(7,26,57,.08) 100%);
+      }
+      .hero-title { font-size: clamp(40px, 12.2vw, 64px); line-height: .92; max-width: 86vw; }
+      .hero-copy { width: 92vw; }
+      .resume-highlights { grid-template-columns: 1fr; }
+      .hero-bottom { gap: 22px; margin-top: 24px; }
+      .btn { width: 100%; }
+      .mini-stats { grid-template-columns: 1fr; }
+      .tool-grid { grid-template-columns: 1fr; }
+      .archive-body { padding: 14px; }
+      .work-grid { gap: 12px; }
+      .work-card, .work-card:nth-child(n) { grid-column: span 12; min-height: 360px; }
+      .work-meta { grid-template-columns: 1fr; }
+      .timeline-row { grid-template-columns: 1fr; gap: 8px; }
+      .timeline-note { grid-column: auto; }
+      .case-hero { min-height: 60svh; }
+      .case-gallery { grid-template-columns: 1fr; }
+      .case-gallery img { min-height: 220px; }
+      .footer-bottom { flex-direction: column; }
+      .contact-links { font-size: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal,
+      .hero-title,
+      .hero-bottom { opacity: 1; transform: none; }
+      .cursor-dot, .cursor-ring { display: none; }
+      body { cursor: auto; }
+    }
+  </style>
+</head>
+<body class="page-noise">
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <a class="skip-link" href="#main">ข้ามไปยังเนื้อหา</a>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand hoverable" href="#top" aria-label="กลับหน้าแรก">
+      <span class="brand-mark">CN</span>
+      <span class="brand-copy">Chonlasit<br>Nilsiri</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="เมนูหลัก">
+      <a class="hoverable" href="#work">Work</a>
+      <a class="hoverable" href="#about">About</a>
+      <a class="hoverable" href="#resume">Resume</a>
+      <a class="hoverable" href="#tools">Tools</a>
+      <a class="hoverable" href="#photography">Photography</a>
+      <a class="hoverable" href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn hoverable" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks">MENU</button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-glow"></div>
+      <div class="hero-glow-2"></div>
+      <div class="hero-inner">
+        <div class="hero-kicker">Production Portfolio</div>
+        <div class="hero-copy"><h1 class="hero-title"><span class="hero-title-line">Chonlasit</span><span class="hero-title-line outline">Nilsiri</span></h1></div>
+        <div class="hero-bottom">
+          <div>
+            <div class="hero-pills">
+              <span class="hero-pill">Director</span>
+              <span class="hero-pill">Camera Assistant</span>
+              <span class="hero-pill">Camera Operator</span>
+            </div>
+            <p class="hero-intro">นิสิตสื่อนฤมิตที่สนใจงานโปรดักชัน งานกล้อง และการเล่าเรื่องผ่านภาพ ชอบทำงานเบื้องหลังที่ทำให้ทุกช็อตข้างหน้ากล้องออกมาชัดเจน มีพลัง และน่าจดจำ</p>
+            <div class="hero-quick" aria-label="สรุปข้อมูลสำคัญ">
+              <div class="quick-card"><strong>09</strong><span>Selected Works</span></div>
+              <div class="quick-card"><strong>03</strong><span>Main Roles On Set</span></div>
+              <div class="quick-card"><strong>25+</strong><span>Photo & BTS Frames</span></div>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary hoverable" href="#work">ดูผลงาน</a>
+            <a class="btn btn-ghost hoverable" href="#resume">ดู Resume</a>
+            <a class="btn btn-ghost hoverable" href="https://www.instagram.com/shootnin_?igsh=MTk4dmg3aHdvZmt3cA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Shootnin Production ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section-inner about-grid">
+        <div class="profile-wrap reveal">
+          <div class="profile-card tilt-card"><img src="assets/profile.webp" alt="ภาพประจำตัวของ ชลสิทธิ์ นิลศิริ" loading="lazy"></div>
+        </div>
+        <div class="about-copy reveal">
+          <div class="eyebrow">About me</div>
+          <h2>ผมชอบอยู่หลังกล้อง เพื่อทำให้เรื่องราวข้างหน้ากล้องชัดขึ้น</h2>
+          <p>สวัสดีครับ ผมชลสิทธิ์ นิลศิริ นิสิตชั้นปีที่ 4 คณะวิทยาการสารสนเทศ สาขาสื่อนฤมิต มหาวิทยาลัยมหาสารคาม มีความสนใจด้านงานโปรดักชัน งานกล้อง และการทำงานเบื้องหลังที่ต้องอาศัยทั้งความละเอียด ความรับผิดชอบ และการทำงานร่วมกับทีม</p>
+          <p>ผมสนุกกับการเรียนรู้ผ่านการลงมือทำจริง ตั้งแต่การกำกับ วางแผนโลเคชัน ประสานงานในกอง ไปจนถึงงานดูแลอุปกรณ์กล้อง และพร้อมพัฒนาทักษะของตัวเองอย่างต่อเนื่องเพื่อเติบโตในสายงานนี้</p>
+          <div class="mini-stats" aria-label="สรุปผลงาน">
+            <div class="stat"><strong>9</strong><span>Selected Projects</span></div>
+            <div class="stat"><strong>9</strong><span>Programs & AI Tools</span></div>
+            <div class="stat"><strong>2</strong><span>Education Milestones</span></div>
+          </div>
+          <div class="tags" aria-label="บทบาทหลัก">
+            <span class="tag">Director</span>
+            <span class="tag">Camera Assistant</span>
+            <span class="tag">Camera Operator</span>
+            <span class="tag">Visual Storytelling</span>
+            <span class="tag">Production Workflow</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section resume-section" id="resume">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Professional profile</div>
+            <h2 class="display-title">Resume</h2>
+          </div>
+          <p class="section-copy">สรุปข้อมูลส่วนตัว การศึกษา ทักษะ และประสบการณ์ทำงานด้านการผลิตภาพยนตร์ งานกล้อง วิดีโอโปรดักชัน และคอนเทนต์สร้างสรรค์</p>
+        </div>
+        <div class="resume-layout">
+          <div class="resume-preview reveal tilt-card">
+            <button class="hoverable" type="button" data-lightbox="assets/resume.webp" aria-label="เปิดดูเรซูเม่ฉบับเต็ม">
+              <img src="assets/resume.webp" alt="เรซูเม่ของ ชลสิทธิ์ นิลศิริ" loading="lazy">
+            </button>
+          </div>
+          <div class="resume-copy reveal">
+            <div class="eyebrow">Camera Assistant · Production</div>
+            <h3>ประสบการณ์จริงจากกองถ่าย พร้อมพัฒนาสู่การทำงานมืออาชีพ</h3>
+            <p>เรซูเม่ฉบับนี้รวบรวมประวัติการศึกษา ทักษะ โปรแกรมที่ใช้งาน และประสบการณ์จาก OFOS Next Frame งานประกวดหนังสั้น งานมิวสิกวิดีโอ งานโฆษณา งานรีวิวสถานที่ และงานโปรดักชันร่วมกับ KKStudioHouse</p>
+            <div class="resume-highlights">
+              <div class="resume-highlight"><strong>ตำแหน่งที่สนใจ</strong><span>Camera Assistant / Camera Department</span></div>
+              <div class="resume-highlight"><strong>การศึกษา</strong><span>สาขาสื่อนฤมิต มหาวิทยาลัยมหาสารคาม</span></div>
+              <div class="resume-highlight"><strong>ความถนัด</strong><span>งานกล้อง โปรดักชัน ตัดต่อ และทำงานเป็นทีม</span></div>
+              <div class="resume-highlight"><strong>Production Page</strong><span>@shootnin_ บน Instagram</span></div>
+            </div>
+            <div class="resume-actions">
+              <button class="btn btn-primary hoverable" type="button" data-lightbox="assets/resume.webp">เปิดดู Resume เต็ม</button>
+              <a class="btn btn-dark hoverable" href="assets/resume.jpg" download="Chonlasit-Nilsiri-Resume.jpg">ดาวน์โหลด Resume</a>
+              <a class="btn btn-dark hoverable" href="https://www.instagram.com/shootnin_?igsh=MTk4dmg3aHdvZmt3cA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Production Page ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section toolkit" id="tools">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Programs & apps</div>
+            <h2 class="display-title">Toolkit</h2>
+          </div>
+          <p class="section-copy">เครื่องมือที่ผมใช้ในการตัดต่อ แต่งภาพ ทำคอนเทนต์ วางงานสร้างสรรค์ และใช้ AI เพื่อช่วยค้นไอเดีย วางโครง และเพิ่มประสิทธิภาพในการทำงาน</p>
+        </div>
+        <div class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title"><span class="panel-badge">Software · AI Tools</span> แอปและโปรแกรมที่ใช้</div>
+              <div class="panel-sub">จัดแสดงแบบการ์ดเพื่อให้ดูชัดเจนและเป็นระเบียบมากขึ้น</div>
+            </div>
+            <div class="panel-badge">09 tools listed</div>
+          </div>
+          <div class="tool-grid" id="toolGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Selected work</div>
+            <h2 class="display-title">My Work</h2>
+          </div>
+          <p class="section-copy">รวมผลงานในรูปแบบ Project Archive ที่จัดวางให้ดูหรูและชัดเจนขึ้น แต่ละช่องมีกรอบรวมที่เป็นระเบียบ คลิกเพื่อเปิดรายละเอียด พร้อมภาพประกอบของผลงานนั้นทันที</p>
+        </div>
+        <div class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title"><span class="panel-badge">Project Archive</span> ตารางผลงานหลัก</div>
+              <div class="panel-sub">แต่ละการ์ดแสดงประเภทงาน ชื่อผลงาน และบทบาทอย่างชัดเจน</div>
+            </div>
+            <div class="panel-badge" id="projectCountBadge">09 selected works</div>
+          </div>
+          <div class="archive-body">
+            <div class="work-grid" id="workGrid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" aria-labelledby="experience-title">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Education & Experience</div>
+            <h2 class="display-title" id="experience-title">Journey</h2>
+          </div>
+          <p class="section-copy">ประสบการณ์จากห้องเรียนสู่กองถ่ายจริง ทำให้เข้าใจทั้งการวางแผน การทำงานเป็นทีม การจัดการอุปกรณ์ และการรับผิดชอบบทบาทต่าง ๆ ในงานโปรดักชัน</p>
+        </div>
+        <div class="panel timeline-panel reveal">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title"><span class="panel-badge">Timeline</span> เส้นทางการเรียนรู้และประสบการณ์</div>
+              <div class="panel-sub">สรุปช่วงสำคัญของการศึกษาและงานในกองถ่าย</div>
+            </div>
+          </div>
+          <div class="timeline">
+            <div class="timeline-row"><div class="timeline-year">2566 - ปัจจุบัน</div><div class="timeline-role">สาขาสื่อนฤมิต</div><div class="timeline-note">คณะวิทยาการสารสนเทศ มหาวิทยาลัยมหาสารคาม</div></div>
+            <div class="timeline-row"><div class="timeline-year">2563 - 2565</div><div class="timeline-role">มัธยมศึกษา</div><div class="timeline-note">โรงเรียนมหาไถ่ศึกษาภาคตะวันออกเฉียงเหนือ แผนวิทย์-คณิต</div></div>
+            <div class="timeline-row"><div class="timeline-year">On Set</div><div class="timeline-role">Camera & Production Roles</div><div class="timeline-note">ทำงานร่วมกับ OFOS Next Frame, KKStudioHouse, B2S และโปรเจกต์ของสาขา ในบทบาท Director, Camera Assistant, Camera Man และ Camera Operator</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="photography">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Still images</div>
+            <h2 class="display-title">Photo<br>graphy</h2>
+          </div>
+          <p class="section-copy">งานภาพถ่ายที่ช่วยฝึกการมองแสง สี องค์ประกอบ และอารมณ์ของภาพ ทั้งภาพบุคคล อาหาร สถานที่ และบรรยากาศ</p>
+        </div>
+        <div class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title"><span class="panel-badge">Photo Gallery</span> ภาพถ่ายผลงาน</div>
+              <div class="panel-sub">คลิกที่ภาพเพื่อดูขนาดเต็ม</div>
+            </div>
+            <div class="panel-badge">10 photos</div>
+          </div>
+          <div class="archive-body">
+            <div class="gallery-grid" id="photoGrid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="bts-title">
+      <div class="section-inner">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">On set</div>
+            <h2 class="display-title" id="bts-title">Behind<br>the Scenes</h2>
+          </div>
+          <p class="section-copy">ภาพเบื้องหลังการทำงานในกองถ่ายจากหลายโปรเจกต์ เพื่อแสดงบรรยากาศจริง หน้าที่ในกอง และมุมการทำงานของผมในสถานการณ์ต่าง ๆ</p>
+        </div>
+        <div class="panel reveal">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title"><span class="panel-badge">BTS Frames</span> ภาพประกอบการทำงาน</div>
+              <div class="panel-sub">เลื่อนดูแบบแนวนอน และคลิกเพื่อขยายภาพ</div>
+            </div>
+            <div class="panel-badge">15 frames</div>
+          </div>
+          <div class="bts-strip" id="btsStrip" aria-label="ภาพเบื้องหลังการทำงาน"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contact" id="contact">
+    <div class="contact-inner">
+      <p class="contact-title">Let’s <span>work</span><br>together.</p>
+      <div class="contact-grid">
+        <div class="contact-links">
+          <a class="hoverable" href="tel:+66944692564">094 469 2564</a>
+          <a class="hoverable" href="mailto:chonlasit7879@gmail.com">chonlasit7879@gmail.com</a>
+          <a class="hoverable" href="https://www.instagram.com/shootnin_?igsh=MTk4dmg3aHdvZmt3cA%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram: @shootnin_</a>
+          <span>Facebook: Chonlasit Nilsiri</span>
+        </div>
+        <p class="contact-note">เปิดรับโอกาสฝึกงานและการร่วมงานด้าน Film Production, Camera Department, Creative Production และงานคอนเทนต์วิดีโอ หากต้องการชมผลงานบนแพลตฟอร์มต่าง ๆ สามารถกดปุ่ม Social ด้านล่างได้ทันที</p>
+      </div>
+      <div class="social-showcase reveal">
+        <a class="social-card social-yt hoverable" href="https://www.youtube.com/watch?v=Nfhscrl5iTo" target="_blank" rel="noopener">
+          <span class="social-label"><span class="social-icon">YT</span> Featured Platform</span>
+          <p class="social-name">YouTube</p>
+          <p class="social-desc">ดูผลงานวิดีโอและโปรเจกต์ที่เผยแพร่บน YouTube</p>
+        </a>
+        <a class="social-card social-production hoverable" href="https://www.instagram.com/shootnin_?igsh=MTk4dmg3aHdvZmt3cA%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+          <span class="social-label"><span class="social-icon">SN</span> Production Page</span>
+          <p class="social-name">Shootnin Production</p>
+          <p class="social-desc">เพจโปรดักชันสำหรับติดตามผลงาน เบื้องหลัง และคอนเทนต์จากทีม</p>
+        </a>
+        <a class="social-card social-ig hoverable" href="https://www.instagram.com/reel/DTXbCL_EvEF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">
+          <span class="social-label"><span class="social-icon">IG</span> Featured Platform</span>
+          <p class="social-name">Instagram</p>
+          <p class="social-desc">ชมคอนเทนต์วิดีโอสั้นและงานที่เผยแพร่บน Instagram</p>
+        </a>
+        <a class="social-card social-fb hoverable" href="https://www.facebook.com/share/v/1LsE1u2WBD/" target="_blank" rel="noopener">
+          <span class="social-label"><span class="social-icon">FB</span> Featured Platform</span>
+          <p class="social-name">Facebook</p>
+          <p class="social-desc">ดูผลงานที่เชื่อมโยงกับโพสต์และวิดีโอบน Facebook</p>
+        </a>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Chonlasit Nilsiri</span><span>Director · Camera Assistant · Camera Operator</span></div>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close hoverable" id="lightboxClose" type="button" aria-label="ปิดภาพ">×</button>
+    <img id="lightboxImage" src="" alt="ภาพขยาย">
+  </div>
+
+  <script src="projects/projects.js"></script>
+  <script>
+    const tools = [
+      { icon: 'Pr', iconClass: 'icon-pr', category: 'Video Editing', name: 'Adobe Premiere Pro', desc: 'ใช้ตัดต่อวิดีโอ จัดลำดับภาพ และทำงานในขั้นตอน post-production' },
+      { icon: 'DR', iconClass: 'icon-dr', category: 'Color & Edit', name: 'DaVinci Resolve', desc: 'ใช้ตัดต่อและช่วยงานเกรดสีเพื่อควบคุมโทนภาพของชิ้นงาน' },
+      { icon: 'CC', iconClass: 'icon-cc', category: 'Short-form', name: 'CapCut', desc: 'ใช้ทำคลิปสั้นและคอนเทนต์ที่ต้องการความรวดเร็วในการผลิต' },
+      { icon: 'Ca', iconClass: 'icon-ca', category: 'Design', name: 'Canva', desc: 'ใช้จัดองค์ประกอบงานนำเสนอ กราฟิก และสื่อประกอบต่าง ๆ' },
+      { icon: 'Lr', iconClass: 'icon-lr', category: 'Photo', name: 'Lightroom', desc: 'ใช้ปรับแสง สี และจัดการภาพถ่ายให้ได้อารมณ์ที่ต้องการ' },
+      { icon: 'FL', iconClass: 'icon-fl', category: 'Music', name: 'FL Studio', desc: 'ใช้สร้างและออกแบบดนตรีประกอบสำหรับบางโปรเจกต์' },
+      { icon: 'AI', iconClass: 'icon-ai', category: 'AI Tool', name: 'ChatGPT', desc: 'ช่วยวางโครงงาน เขียนไอเดีย และจัดระเบียบข้อมูลให้ทำงานได้เร็วขึ้น' },
+      { icon: 'Gm', iconClass: 'icon-gm', category: 'AI Tool', name: 'Gemini', desc: 'ใช้ช่วยระดมความคิดและค้นแนวทางเพิ่มเติมในการทำงานสร้างสรรค์' },
+      { icon: 'Cl', iconClass: 'icon-cl', category: 'AI Tool', name: 'Claude', desc: 'ใช้ช่วยสรุปข้อมูลและพัฒนาโครงเนื้อหาในขั้นเตรียมงาน' }
+    ];
+
+    const projects = PROJECTS;
+    const projectCountBadge = document.getElementById('projectCountBadge');
+    if (projectCountBadge) projectCountBadge.textContent = `${String(projects.length).padStart(2, '0')} selected works`;
+
+
+    const toolGrid = document.getElementById('toolGrid');
+    tools.forEach(tool => {
+      const card = document.createElement('article');
+      card.className = 'tool-card reveal tilt-card';
+      card.innerHTML = `
+        <div class="tool-icon ${tool.iconClass}">${tool.icon}</div>
+        <small>${tool.category}</small>
+        <h3 class="tool-name">${tool.name}</h3>
+        <p class="tool-desc">${tool.desc}</p>
+      `;
+      toolGrid.appendChild(card);
+    });
+
+    const workGrid = document.getElementById('workGrid');
+    projects.forEach(project => {
+      const card = document.createElement('a');
+      card.href = `projects/project.html?id=${encodeURIComponent(project.id)}`;
+      card.className = 'work-card reveal tilt-card hoverable';
+      card.setAttribute('aria-label', `ดูรายละเอียด ${project.title}`);
+      card.innerHTML = `
+        <img src="${project.image}" alt="ภาพปก ${project.title}" loading="lazy">
+        <span class="work-outline" aria-hidden="true"></span>
+        <span class="work-meta">
+          <span>
+            <span class="work-type">${project.type}</span>
+            <strong class="work-title">${project.title}</strong>
+            <span class="work-role">${project.role}</span>
+          </span>
+          <span class="work-cta">View Case ↗</span>
+        </span>
+      `;
+      workGrid.appendChild(card);
+    });
+
+    const photoGrid = document.getElementById('photoGrid');
+    for (let i = 1; i <= 10; i++) {
+      const src = `assets/photo-${String(i).padStart(2,'0')}.webp`;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gallery-item hoverable';
+      btn.dataset.lightbox = src;
+      btn.setAttribute('aria-label', 'เปิดภาพถ่าย');
+      btn.innerHTML = `<img src="${src}" alt="ผลงานภาพถ่าย" loading="lazy">`;
+      photoGrid.appendChild(btn);
+    }
+
+    const btsStrip = document.getElementById('btsStrip');
+    for (let i = 1; i <= 15; i++) {
+      const src = `assets/bts-${String(i).padStart(2,'0')}.webp`;
+      const item = document.createElement('button');
+      item.type = 'button';
+      item.className = 'bts-card hoverable';
+      item.dataset.lightbox = src;
+      item.setAttribute('aria-label', 'เปิดภาพเบื้องหลัง');
+      item.innerHTML = `<img src="${src}" alt="ภาพเบื้องหลังการทำงาน" loading="lazy">`;
+      btsStrip.appendChild(item);
+    }
+
+    const header = document.getElementById('siteHeader');
+    const navLinks = document.getElementById('navLinks');
+    const menuBtn = document.getElementById('menuBtn');
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 42);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    let cursorX = window.innerWidth / 2;
+    let cursorY = window.innerHeight / 2;
+    let ringX = cursorX;
+    let ringY = cursorY;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReduced && window.innerWidth > 960) {
+      window.addEventListener('mousemove', e => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+        cursorDot.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        document.documentElement.style.setProperty('--cursor-x', `${cursorX}px`);
+        document.documentElement.style.setProperty('--cursor-y', `${cursorY}px`);
+      }, { passive: true });
+
+      const animateRing = () => {
+        ringX += (cursorX - ringX) * 0.15;
+        ringY += (cursorY - ringY) * 0.15;
+        cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+        requestAnimationFrame(animateRing);
+      };
+      animateRing();
+
+      document.querySelectorAll('.hoverable, button, a').forEach(el => {
+        el.addEventListener('mouseenter', () => cursorRing.classList.add('active'));
+        el.addEventListener('mouseleave', () => cursorRing.classList.remove('active'));
+      });
+    }
+
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      if (prefersReduced) return;
+      card.addEventListener('mousemove', e => {
+        if (window.innerWidth <= 960) return;
+        const rect = card.getBoundingClientRect();
+        const px = ((e.clientX - rect.left) / rect.width) * 100;
+        const py = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', `${px}%`);
+        card.style.setProperty('--my', `${py}%`);
+        const rotateY = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
+        const rotateX = ((e.clientY - rect.top) / rect.height - 0.5) * -8;
+        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.setProperty('--mx', '50%');
+        card.style.setProperty('--my', '50%');
+      });
+    });
+
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    function openLightbox(src) {
+      lightboxImage.src = src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      document.body.classList.remove('modal-open');
+    }
+    document.addEventListener('click', event => {
+      const item = event.target.closest('[data-lightbox]');
+      if (item) openLightbox(item.dataset.lightbox);
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+
+  </script>
+</body>
+</html>
