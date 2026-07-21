@@ -388,6 +388,55 @@
     }
     .work-card:hover .work-cta { background: var(--white); color: var(--navy); transform: translateY(-2px); }
 
+    .work-card-link {
+      position: absolute; inset: 0; z-index: 2; display: block; border-radius: inherit;
+    }
+    .work-preview-btn,
+    .work-preview-link,
+    .work-preview-unavailable {
+      position: absolute; z-index: 6; top: 18px; right: 18px;
+      min-height: 44px; padding: 0 15px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,.36); color: var(--white);
+      background: rgba(4,14,33,.68); backdrop-filter: blur(12px);
+      font-size: 12px; font-weight: 900; cursor: pointer;
+      box-shadow: 0 10px 28px rgba(2,10,26,.22);
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .work-preview-btn:hover,
+    .work-preview-link:hover { transform: translateY(-2px); background: var(--blue); border-color: var(--blue-2); }
+    .work-preview-unavailable { opacity: .72; cursor: default; }
+    .work-preview-icon {
+      width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--white); color: var(--navy); font-size: 10px; padding-left: 2px;
+    }
+
+    .video-modal {
+      position: fixed; inset: 0; z-index: 6000; padding: clamp(14px, 3vw, 34px);
+      display: grid; place-items: center; background: rgba(2,10,26,.94);
+      opacity: 0; visibility: hidden; transition: opacity .24s ease, visibility .24s ease;
+    }
+    .video-modal.open { opacity: 1; visibility: visible; }
+    .video-dialog {
+      width: min(1100px, 100%); border-radius: 24px; overflow: hidden;
+      background: #07162f; color: var(--white); border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 35px 100px rgba(0,0,0,.5);
+    }
+    .video-modal-head {
+      min-height: 62px; padding: 12px 14px 12px 20px; display: flex;
+      align-items: center; justify-content: space-between; gap: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .video-modal-title { margin: 0; font-size: 16px; line-height: 1.35; }
+    .video-close {
+      flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; cursor: pointer;
+      border: 1px solid rgba(255,255,255,.34); color: var(--white); background: rgba(255,255,255,.08);
+      font-size: 23px;
+    }
+    .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+    .video-frame iframe,
+    .video-frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: contain; }
+
 
     .resume-section {
       background: linear-gradient(180deg, rgba(220,238,255,.22) 0%, rgba(255,255,255,0) 100%);
@@ -646,8 +695,10 @@
       .tool-grid { grid-template-columns: 1fr; }
       .archive-body { padding: 14px; }
       .work-grid { gap: 12px; }
-      .work-card, .work-card:nth-child(n) { grid-column: span 12; min-height: 360px; }
-      .work-meta { grid-template-columns: 1fr; }
+      .work-card, .work-card:nth-child(n) { grid-column: span 12; width: 100%; min-width: 0; min-height: clamp(320px, 92vw, 430px); }
+      .work-card.reveal { opacity: 1; transform: none; }
+      .work-preview-btn, .work-preview-link, .work-preview-unavailable { top: 12px; right: 12px; min-height: 42px; }
+      .work-meta { grid-template-columns: 1fr; padding: 20px; padding-top: 76px; }
       .timeline-row { grid-template-columns: 1fr; gap: 8px; }
       .timeline-note { grid-column: auto; }
       .case-hero { min-height: 60svh; }
@@ -945,8 +996,53 @@
     <img id="lightboxImage" src="" alt="ภาพขยาย">
   </div>
 
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <div class="video-modal-head">
+        <h2 class="video-modal-title" id="videoModalTitle">Video Preview</h2>
+        <button class="video-close hoverable" id="videoClose" type="button" aria-label="ปิดวิดีโอ">×</button>
+      </div>
+      <div class="video-frame" id="videoFrame"></div>
+    </div>
+  </div>
+
   <script src="projects/projects.js"></script>
   <script>
+    function getVideoPreview(url) {
+      if (!url) return null;
+      try {
+        const parsed = new URL(url, window.location.href);
+        const host = parsed.hostname.replace(/^www\./, '');
+        let videoId = '';
+        if (host === 'youtu.be') videoId = parsed.pathname.split('/').filter(Boolean)[0] || '';
+        if (host.includes('youtube.com')) {
+          videoId = parsed.searchParams.get('v') || '';
+          if (!videoId) {
+            const parts = parsed.pathname.split('/').filter(Boolean);
+            const marker = parts.findIndex(part => ['embed', 'shorts', 'live'].includes(part));
+            if (marker >= 0) videoId = parts[marker + 1] || '';
+          }
+        }
+        if (videoId) {
+          const timeValue = parsed.searchParams.get('t') || '';
+          const start = parseInt(timeValue, 10);
+          return {
+            kind: 'iframe',
+            platform: 'YouTube',
+            src: `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0${Number.isFinite(start) ? `&start=${start}` : ''}`
+          };
+        }
+        const driveMatch = url.match(/drive\.google\.com\/file\/d\/([^/]+)/i);
+        if (driveMatch) return { kind: 'iframe', platform: 'Google Drive', src: `https://drive.google.com/file/d/${driveMatch[1]}/preview` };
+        const instagramMatch = url.match(/instagram\.com\/(?:reel|p)\/([^/?#]+)/i);
+        if (instagramMatch) return { kind: 'iframe', platform: 'Instagram', src: `https://www.instagram.com/reel/${instagramMatch[1]}/embed/` };
+      } catch (error) {
+        console.warn('Preview URL could not be parsed:', error);
+      }
+      return { kind: 'external', platform: 'Original platform', src: url };
+    }
+
     const tools = [
       { icon: 'Pr', iconClass: 'icon-pr', category: 'Video Editing', name: 'Adobe Premiere Pro', desc: 'ใช้ตัดต่อวิดีโอ จัดลำดับภาพ และทำงานในขั้นตอน post-production' },
       { icon: 'DR', iconClass: 'icon-dr', category: 'Color & Edit', name: 'DaVinci Resolve', desc: 'ใช้ตัดต่อและช่วยงานเกรดสีเพื่อควบคุมโทนภาพของชิ้นงาน' },
@@ -978,22 +1074,29 @@
     });
 
     const workGrid = document.getElementById('workGrid');
-    projects.forEach(project => {
-      const card = document.createElement('a');
-      card.href = `projects/project.html?id=${encodeURIComponent(project.id)}`;
+    projects.forEach((project, index) => {
+      const preview = getVideoPreview(project.video || project.url);
+      const card = document.createElement('article');
       card.className = 'work-card reveal tilt-card hoverable';
-      card.setAttribute('aria-label', `ดูรายละเอียด ${project.title}`);
+      const previewControl = !preview
+        ? '<span class="work-preview-unavailable">ยังไม่มีวิดีโอ</span>'
+        : preview.kind === 'external'
+          ? `<a class="work-preview-link" href="${preview.src}" target="_blank" rel="noopener" aria-label="ดูวิดีโอ ${project.title}"><span class="work-preview-icon">▶</span>ดูคลิป ↗</a>`
+          : `<button class="work-preview-btn" type="button" data-video-src="${preview.src}" data-video-title="${project.title}" data-video-platform="${preview.platform}" aria-label="เล่นตัวอย่างวิดีโอ ${project.title}"><span class="work-preview-icon">▶</span>เล่นตัวอย่าง</button>`;
       card.innerHTML = `
-        <img src="${project.image}" alt="ภาพปก ${project.title}" loading="lazy">
-        <span class="work-outline" aria-hidden="true"></span>
-        <span class="work-meta">
-          <span>
-            <span class="work-type">${project.type}</span>
-            <strong class="work-title">${project.title}</strong>
-            <span class="work-role">${project.role}</span>
+        <a class="work-card-link" href="projects/project.html?id=${encodeURIComponent(project.id)}" aria-label="ดูรายละเอียด ${project.title}">
+          <img src="${project.image}" alt="ภาพปก ${project.title}" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async">
+          <span class="work-outline" aria-hidden="true"></span>
+          <span class="work-meta">
+            <span>
+              <span class="work-type">${project.type || 'Video Production'}</span>
+              <strong class="work-title">${project.title}</strong>
+              <span class="work-role">${project.role}</span>
+            </span>
+            <span class="work-cta">View Case ↗</span>
           </span>
-          <span class="work-cta">View Case ↗</span>
-        </span>
+        </a>
+        ${previewControl}
       `;
       workGrid.appendChild(card);
     });
@@ -1039,15 +1142,21 @@
       });
     });
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    const revealItems = document.querySelectorAll('.reveal');
+    const isMobileLayout = window.matchMedia('(max-width: 960px)').matches;
+    if (!('IntersectionObserver' in window) || isMobileLayout) {
+      revealItems.forEach(el => el.classList.add('in-view'));
+    } else {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px 120px 0px' });
+      revealItems.forEach(el => observer.observe(el));
+    }
 
     const cursorDot = document.getElementById('cursorDot');
     const cursorRing = document.getElementById('cursorRing');
@@ -1101,6 +1210,43 @@
     });
 
 
+    const videoModal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+    const videoClose = document.getElementById('videoClose');
+    const videoModalTitle = document.getElementById('videoModalTitle');
+
+    function closeVideoPreview() {
+      videoModal.classList.remove('open');
+      videoModal.setAttribute('aria-hidden', 'true');
+      videoFrame.innerHTML = '';
+      document.body.classList.remove('modal-open');
+    }
+
+    document.addEventListener('click', event => {
+      const previewButton = event.target.closest('[data-video-src]');
+      if (!previewButton) return;
+      event.preventDefault();
+      event.stopPropagation();
+      videoModalTitle.textContent = `${previewButton.dataset.videoTitle} · ${previewButton.dataset.videoPlatform}`;
+      const iframe = document.createElement('iframe');
+      iframe.src = previewButton.dataset.videoSrc;
+      iframe.title = `ตัวอย่างวิดีโอ ${previewButton.dataset.videoTitle}`;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      videoFrame.appendChild(iframe);
+      videoModal.classList.add('open');
+      videoModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      videoClose.focus();
+    });
+
+    videoClose.addEventListener('click', closeVideoPreview);
+    videoModal.addEventListener('click', event => {
+      if (event.target === videoModal) closeVideoPreview();
+    });
+
+
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxClose = document.getElementById('lightboxClose');
@@ -1126,6 +1272,7 @@
     });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      if (event.key === 'Escape' && videoModal.classList.contains('open')) closeVideoPreview();
     });
 
   </script>
