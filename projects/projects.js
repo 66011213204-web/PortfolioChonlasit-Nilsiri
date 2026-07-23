@@ -57,7 +57,7 @@ const PROJECTS = [
     "id": "ofos-action",
     "number": "03",
     "title": "ค่าย OFOS Next Frame — หนังแอ็กชัน",
-    "role": "Camera Assistant",
+    "role": "Assistant Camera",
     "type": "Action Film / Camera Department",
     "format": "Film / Camera Department",
     "image": "assets/project-03.webp",
@@ -124,7 +124,7 @@ const PROJECTS = [
     "id": "official-mv",
     "number": "06",
     "title": "Official Music Video",
-    "role": "Camera Assistant / Music Composer",
+    "role": "Assistant Camera / Music Composer",
     "type": "Music Video",
     "format": "Music Video Production",
     "image": "assets/project-06.webp",
@@ -189,14 +189,14 @@ const PROJECTS = [
     "id": "mahachai-delivery",
     "number": "09",
     "title": "มหาชัยกรุ๊ป เดลิเวอรี่",
-    "role": "Camera Assistant",
+    "role": "Assistant Camera",
     "type": "Branded Content",
     "format": "Commercial / Branded Content",
     "image": "assets/project-09.webp",
     "description": "งานถ่ายทำร่วมกับ KKStudioHouse ที่ได้เรียนรู้การทำงานในกองจริง การสนับสนุนทีมกล้อง และการเตรียมความพร้อมของอุปกรณ์ตามจังหวะการผลิต",
     "duties": [
       "ทำงานร่วมกับทีม KKStudioHouse",
-      "ปฏิบัติหน้าที่ Camera Assistant",
+      "ปฏิบัติหน้าที่ Assistant Camera",
       "เตรียมและดูแลความพร้อมของอุปกรณ์กล้อง",
       "ช่วยให้การถ่ายทำดำเนินไปอย่างต่อเนื่อง"
     ],
@@ -215,7 +215,7 @@ const PROJECTS = [
     "id": "เงาเเทนคน", // รหัสผลงาน ต้องไม่ซ้ำกับผลงานอื่น
     "number": "10", // หมายเลขช่องผลงาน
     "title": "เงาแทนคน", // ชื่อผลงานแสดงบนเว็บ
-    "role": "Camera Assistant", // หน้าที่ของคุณในงานนี้
+    "role": "Assistant Camera", // หน้าที่ของคุณในงานนี้
     // เช่น Film / Commercial / Content
     "format": "รูปแบบการผลิต", // รายละเอียดรูปแบบงาน
     "image": "assets/project-12-gallery-3.jpg", // รูปปกผลงาน
@@ -238,7 +238,7 @@ const PROJECTS = [
     "id": "นึกย้อนวันเก่า", // รหัสผลงาน
     "number": "11", // หมายเลขช่อง
     "title": "นึกย้อนวันเก่า", // ชื่อผลงาน
-    "role": "Camera Assistant", // บทบาท
+    "role": "Assistant Camera", // บทบาท
     "type": "Music Video", // ประเภท
     "format": "Camera & Lighting Production", // รูปแบบ
     "image": "assets/project-11-gallery-2.jpg", // รูปปก
@@ -299,7 +299,7 @@ const PROJECTS = [
     "id": "THROUGH THE HUSTLE", // รหัสผลงาน
     "number": "15", // หมายเลขช่อง
     "title": "THROUGH THE HUSTLE", // ชื่อผลงาน
-    "role": "Gaffre", // บทบาท
+    "role": "Gaffer", // บทบาท
     "type": "SHORT FILM", // ประเภท
     "format": "ดูเเลการจัดเเสง การจัดสถานที่ในการถ่ายทำ", // รูปแบบ
     "image": "assets/project-02-gallery-2.jpg", // รูปปก
@@ -312,7 +312,7 @@ const PROJECTS = [
     "id": "จะให้ลืมยังไง", // รหัสผลงาน
     "number": "16", // หมายเลขช่อง
     "title": "จะให้ลืมยังไง", // ชื่อผลงาน
-    "role": "Gaffre", // บทบาท
+    "role": "Gaffer", // บทบาท
     "type": "Music Video", // ประเภท
     "format": "Music Video", // รูปแบบ
     "image": "assets/project-26-gallery-1.jpg", // รูปปก
